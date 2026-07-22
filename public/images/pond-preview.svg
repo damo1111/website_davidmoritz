@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img">
+  <rect width="900" height="600" fill="#A8B5C5"/>
+  
+      <g>
+        <rect x="-60" y="120" width="1100" height="46" fill="#0B0B0B" transform="rotate(-18 450 300)"/>
+        <rect x="-60" y="220" width="1100" height="46" fill="#3B2BFF" transform="rotate(-18 450 300)"/>
+        <rect x="-60" y="320" width="1100" height="46" fill="#0B0B0B" transform="rotate(-18 450 300)"/>
+      </g>
+      <circle cx="720" cy="192" r="130" fill="#FFFFFF"/>
+      <circle cx="720" cy="192" r="130" fill="none" stroke="#0B0B0B" stroke-width="8"/>
+    
+  <text x="52" y="560" font-family="'Space Grotesk', sans-serif" font-size="120" font-weight="700" fill="#0B0B0B" opacity="0.14">P</text>
+</svg>

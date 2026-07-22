@@ -48,6 +48,7 @@ export function Projects() {
           <ProjectCard
             key={project.id}
             project={project}
+            wide={project.size === "large"}
             className={cn(spanClasses[project.id])}
           />
         ))}
