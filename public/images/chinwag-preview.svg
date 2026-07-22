@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" role="img">
+  <rect width="900" height="600" fill="#A8C5C0"/>
+  
+  <rect x="450" y="96" width="330" height="230" rx="46" fill="#0B0B0B"/>
+  <path d="M 522 432 l 60 -30 l -6 70 Z" fill="#0B0B0B"/>
+  <circle cx="567" cy="252" r="16" fill="#FFFFFF"/>
+  <circle cx="648" cy="252" r="16" fill="#FFFFFF"/>
+  <circle cx="729" cy="252" r="16" fill="#D6FF3E"/>
+  <rect x="70" y="120" width="200" height="44" rx="22" fill="#3B2BFF"/>
+  <rect x="70" y="185" width="130" height="44" rx="22" fill="#0B0B0B"/>
+  <circle cx="74" cy="450" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="74" cy="492" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="116" cy="450" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="116" cy="492" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="158" cy="450" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="158" cy="492" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="200" cy="450" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="200" cy="492" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="242" cy="450" r="7" fill="#0B0B0B" opacity="0.5"/><circle cx="242" cy="492" r="7" fill="#0B0B0B" opacity="0.5"/>
+
+  <text x="52" y="560" font-family="'Space Grotesk', sans-serif" font-size="120" font-weight="700" fill="#0B0B0B" opacity="0.14">C</text>
+</svg>

@@ -55,7 +55,7 @@ export const projects: Project[] = [
   },
   {
     id: "moritzwith",
-    name: "Moritzwith",
+    name: "DuckWorth",
     studio: "eend.app",
     url: "smith.eend.app",
     tag: "Finance AI",
@@ -78,15 +78,16 @@ export const projects: Project[] = [
     accentColor: "#B5A8C5",
   },
   {
-    id: "tare",
-    name: "Tare",
+    id: "chinwag",
+    name: "Chinwag",
     studio: "Personal",
     url: null,
-    tag: "Health PWA",
-    description: "Personal health tracking. Quiet, precise, private.",
+    tag: "Messaging AI",
+    description:
+      "Every message in one inbox — with AI replies drafted in your voice. A self-hosted bridge across WhatsApp, LinkedIn, Messenger and more.",
     status: "building",
     size: "small",
-    screengrab: "/images/tare-preview.svg",
+    screengrab: "/images/chinwag-preview.svg",
     accentColor: "#A8C5C0",
   },
 ];
