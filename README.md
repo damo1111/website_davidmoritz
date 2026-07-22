@@ -21,19 +21,20 @@ npm run lint    # eslint
 
 ## Design tokens
 
-Defined in `tailwind.config.ts`:
+Bold & modern light system, defined in `tailwind.config.ts`:
 
-| Token       | Value     |
-| ----------- | --------- |
-| `bg`        | `#0B0B0D` |
-| `surface`   | `#161618` |
-| `border`    | `#2A2A2E` |
-| `text`      | `#F2EDE4` |
-| `muted`     | `#8B8B95` |
-| `gold`      | `#D4B483` |
-| `gold-dark` | `#A8895A` |
+| Token     | Value     | Use                          |
+| --------- | --------- | ---------------------------- |
+| `bg`      | `#FFFFFF` | page background              |
+| `ink`     | `#0B0B0B` | primary text / borders       |
+| `paper`   | `#F3F3EE` | soft surface                 |
+| `line`    | `#E4E4DE` | hairline borders             |
+| `muted`   | `#6B6B73` | secondary text               |
+| `accent`  | `#3B2BFF` | electric indigo (primary)    |
+| `lime`    | `#D6FF3E` | secondary pop                |
+| `coral`   | `#FF5C35` | tertiary pop                 |
 
-Fonts (loaded via `next/font/google`): **Cormorant** (display), **DM Sans** (body), **DM Mono** (mono).
+Fonts (loaded via `next/font/google`): **Space Grotesk** (display), **Inter** (body), **Space Mono** (mono labels).
 
 ## Structure
 
@@ -45,19 +46,18 @@ src/
     globals.css
   components/
     sections/
-      Hero.tsx          name, tagline, scrolling marquee, spotlight
+      Hero.tsx          oversized name, tagline, color blocks, marquee bar
       Now.tsx           what I'm building right now (3 cards)
       Projects.tsx      bento grid of all projects
       Work.tsx          career timeline (horizontal scroll)
-      Contact.tsx       single CTA
+      Contact.tsx       full-bleed accent CTA block
       Footer.tsx        copyright + links
     ui/
-      Marquee.tsx       infinite scroll ticker
-      ProjectCard.tsx   image/gradient card with hover reveal
+      Marquee.tsx       infinite scroll ticker (bar / plain variants)
+      ProjectCard.tsx   color-block card with hover reveal
       Tag.tsx           pill label
-      Divider.tsx       section separator with D.M. mark
-      Spotlight.tsx     ambient hero background glow
-      ScrollProgress.tsx  top gold scroll-progress bar
+      Divider.tsx       section separator with DM mark
+      ScrollProgress.tsx  top accent scroll-progress bar
   lib/
     utils.ts            cn() helper
   data/
@@ -70,7 +70,7 @@ src/
 Project screengrabs are optional. Add them to `public/images/` using the
 convention `susan-preview.png`, `davanity-preview.png`, `pond-preview.png`,
 `smith-preview.png`, `nous-preview.png`. Cards without an available image fall
-back to a per-project accent gradient automatically.
+back to a per-project accent color block automatically.
 
 ## Deployment
 

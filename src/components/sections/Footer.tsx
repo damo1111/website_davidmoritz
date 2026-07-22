@@ -7,11 +7,16 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-8 py-6 sm:flex-row">
-        <p className="font-mono text-[11px] text-muted">
-          © 2026 David Moritz
-        </p>
+    <footer className="w-full bg-ink text-bg">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 sm:flex-row sm:items-center">
+        <div className="flex items-center gap-3">
+          <span className="flex h-8 w-11 items-center justify-center rounded bg-bg font-mono text-xs font-bold text-ink">
+            DM
+          </span>
+          <p className="font-mono text-[11px] font-medium uppercase tracking-tight text-bg/70">
+            © 2026 David Moritz
+          </p>
+        </div>
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {links.map((link) =>
             link.href ? (
@@ -20,14 +25,14 @@ export function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] text-muted transition-colors duration-300 hover:text-gold"
+                className="font-mono text-[11px] font-bold uppercase tracking-tight text-bg transition-colors duration-200 hover:text-lime"
               >
                 {link.label}
               </a>
             ) : (
               <span
                 key={link.label}
-                className="font-mono text-[11px] text-muted"
+                className="font-mono text-[11px] font-bold uppercase tracking-tight text-bg/50"
               >
                 {link.label}
               </span>

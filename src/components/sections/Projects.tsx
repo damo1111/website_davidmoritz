@@ -19,26 +19,31 @@ const spanClasses: Record<string, string> = {
 
 export function Projects() {
   return (
-    <section id="projects" className="mx-auto w-full max-w-6xl px-8">
-      <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-gold">
-        Projects
+    <section id="projects" className="mx-auto w-full max-w-6xl px-6">
+      <p className="font-mono text-xs font-medium uppercase tracking-tight text-accent">
+        [ Projects ]
       </p>
-      <h2 className="mt-4 font-display text-5xl font-light italic leading-[1.05] text-text md:text-6xl">
+      <h2 className="display-tight mt-3 font-display text-6xl font-bold uppercase text-ink md:text-8xl">
         {headlineLines.map((line, i) => (
           <motion.span
             key={line}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, delay: i * 0.12, ease: "easeOut" }}
-            className="block"
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 18,
+              delay: i * 0.08,
+            }}
+            className={cn("block", i === 2 && "text-accent")}
           >
             {line}
           </motion.span>
         ))}
       </h2>
 
-      <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-6">
+      <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-6">
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
