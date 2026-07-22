@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/data/projects";
@@ -9,16 +7,13 @@ import type { Project } from "@/data/projects";
 interface ProjectCardProps {
   project: Project;
   className?: string;
+  /** Large cards place the copy beside the art on desktop. */
+  wide?: boolean;
 }
 
-export function ProjectCard({ project, className }: ProjectCardProps) {
+export function ProjectCard({ project, className, wide = false }: ProjectCardProps) {
   const { name, studio, url, tag, description, status, screengrab, accentColor } =
     project;
-
-  // Fall back to the accent gradient if a screengrab is absent or fails to load
-  // (screengrabs are added later — see brief section 8).
-  const [imageOk, setImageOk] = useState(Boolean(screengrab));
-  const showImage = Boolean(screengrab) && imageOk;
 
   const CardTag = url ? "a" : "div";
   const linkProps = url
@@ -31,89 +26,103 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ type: "spring", stiffness: 120, damping: 18 }}
       className={cn("group h-full", className)}
     >
       <CardTag
         {...linkProps}
         className={cn(
-          "relative flex h-full min-h-[280px] flex-col justify-end overflow-hidden rounded border border-border bg-surface p-7",
-          "transition-all duration-300 ease-out",
-          "hover:-translate-y-0.5 hover:scale-[1.02] hover:border-gold"
+          "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border-2 border-ink",
+          "transition-all duration-200 ease-out",
+          "hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#0B0B0B]",
+          wide && "md:min-h-[360px] md:flex-row"
         )}
+        style={{ backgroundColor: accentColor }}
       >
-        {/* Background: screengrab if present, else accent gradient */}
-        {showImage && screengrab ? (
-          <>
-            <Image
-              src={screengrab}
-              alt={`${name} preview`}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover opacity-40 transition-opacity duration-300 group-hover:opacity-60"
-              onError={() => setImageOk(false)}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-surface/30" />
-          </>
-        ) : (
+        {/* Artwork */}
+        <div
+          className={cn(
+            "relative shrink-0 overflow-hidden",
+            wide ? "h-44 md:h-auto md:w-1/2" : "h-40"
+          )}
+          style={
+            screengrab
+              ? {
+                  backgroundImage: `url(${screengrab})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }
+              : undefined
+          }
+        >
           <div
-            className="absolute inset-0 opacity-25 transition-opacity duration-300 group-hover:opacity-40"
-            style={{
-              background: `radial-gradient(120% 120% at 20% 0%, ${accentColor}55, transparent 60%)`,
-            }}
-          />
-        )}
-
-        {/* Arrow — appears on hover */}
-        {url && (
-          <span
-            className="absolute right-6 top-6 z-10 translate-y-1 font-mono text-lg text-gold opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-            aria-hidden="true"
-          >
-            ↗
-          </span>
-        )}
-
-        {/* Studio + status dot in top-left */}
-        <div className="absolute left-6 top-6 z-10 flex items-center gap-2">
-          <span
             className={cn(
-              "h-1.5 w-1.5 rounded-full",
-              status === "live" ? "animate-pulse-dot bg-[#7BC47F]" : "bg-gold"
+              "absolute inset-0 border-ink transition-transform duration-500 group-hover:scale-105",
+              wide ? "border-b-2 md:border-b-0 md:border-r-2" : "border-b-2"
             )}
+            style={
+              screengrab
+                ? {
+                    backgroundImage: `url(${screengrab})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }
+                : undefined
+            }
           />
-          <span className="font-mono text-[10px] uppercase tracking-widest text-muted">
-            {studio}
-          </span>
         </div>
 
         {/* Content */}
-        <div className="relative z-10">
-          <div className="mb-3">
-            <span
-              className="inline-flex items-center rounded-full px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest"
-              style={{
-                backgroundColor: `${accentColor}26`,
-                color: accentColor,
-              }}
-            >
+        <div className="relative flex flex-1 flex-col bg-bg p-6">
+          {/* Top row: studio + arrow */}
+          <div className="flex items-start justify-between">
+            <div className="inline-flex items-center gap-2">
+              <span
+                className={cn(
+                  "h-1.5 w-1.5 rounded-full",
+                  status === "live" ? "animate-pulse-dot bg-accent" : "bg-ink"
+                )}
+              />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-tight text-muted">
+                {studio}
+              </span>
+            </div>
+            {url ? (
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-ink bg-bg text-base font-bold text-ink transition-transform duration-300 group-hover:rotate-45"
+                aria-hidden="true"
+              >
+                ↗
+              </span>
+            ) : (
+              <span className="rounded-full bg-ink px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-tight text-bg">
+                Soon
+              </span>
+            )}
+          </div>
+
+          {/* Name + tag */}
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+            <h3 className="font-display text-2xl font-bold leading-none text-ink md:text-3xl">
+              {name}
+            </h3>
+            <span className="inline-flex items-center rounded-full bg-ink px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-tight text-bg">
               {tag}
             </span>
           </div>
-          <h3 className="font-display text-[28px] font-light leading-tight text-text">
-            {name}
-          </h3>
-          <p className="mt-2 max-h-0 overflow-hidden font-body text-sm text-muted opacity-0 transition-all duration-300 group-hover:max-h-40 group-hover:opacity-100">
+
+          {/* Description — always visible */}
+          <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-muted">
             {description}
           </p>
-          {url && (
-            <p className="mt-3 font-mono text-xs text-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              {url}
-            </p>
-          )}
+
+          {/* URL */}
+          <p className="mt-4 font-mono text-xs font-bold uppercase tracking-tight text-accent">
+            {url ? `${url} →` : "In development"}
+          </p>
         </div>
       </CardTag>
     </motion.div>

@@ -3,29 +3,42 @@ import { cn } from "@/lib/utils";
 interface MarqueeProps {
   text: string;
   className?: string;
+  /** Visual variant. "bar" is a full-width ink block; "plain" is bare text. */
+  variant?: "bar" | "plain";
+  fast?: boolean;
 }
 
 /**
- * Infinite horizontal marquee. Text scrolls right to left, continuously,
- * no pause on hover. The content is duplicated so the CSS animation
- * (translateX -50%) loops seamlessly with no gap between repetitions.
+ * Infinite horizontal marquee. Text scrolls right to left, continuously.
+ * The content is duplicated so the CSS animation (translateX -50%) loops
+ * seamlessly with no gap between repetitions.
  */
-export function Marquee({ text, className }: MarqueeProps) {
+export function Marquee({
+  text,
+  className,
+  variant = "plain",
+  fast = false,
+}: MarqueeProps) {
+  const isBar = variant === "bar";
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden py-4",
-        // subtle fade at both edges
-        "[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]",
+        "relative w-full overflow-hidden",
+        isBar ? "bg-ink py-4 text-bg" : "py-3 text-ink",
         className
       )}
     >
-      <div className="flex w-max animate-marquee whitespace-nowrap will-change-transform">
-        <span className="font-mono text-[11px] tracking-[0.15em] text-muted">
+      <div
+        className={cn(
+          "flex w-max whitespace-nowrap will-change-transform",
+          fast ? "animate-marquee-fast" : "animate-marquee"
+        )}
+      >
+        <span className="font-mono text-sm font-medium uppercase tracking-tight">
           {text}
         </span>
         <span
-          className="font-mono text-[11px] tracking-[0.15em] text-muted"
+          className="font-mono text-sm font-medium uppercase tracking-tight"
           aria-hidden="true"
         >
           {text}

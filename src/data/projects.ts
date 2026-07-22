@@ -25,7 +25,7 @@ export const projects: Project[] = [
       "AI care companion for elderly people, those with disabilities, and their carers. Ambient monitoring. Proactive support.",
     status: "live",
     size: "large",
-    screengrab: "/images/susan-preview.png",
+    screengrab: "/images/susan-preview.svg",
     accentColor: "#A8C5A0",
   },
   {
@@ -38,7 +38,7 @@ export const projects: Project[] = [
       "Personal health and lifestyle tracker. Apple Health integration. Wearable signal interpretation.",
     status: "live",
     size: "medium",
-    screengrab: "/images/davanity-preview.png",
+    screengrab: "/images/davanity-preview.svg",
     accentColor: "#C5A8B5",
   },
   {
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     description: "AI travel planning. Built for people who move constantly.",
     status: "live",
     size: "medium",
-    screengrab: "/images/pond-preview.png",
+    screengrab: "/images/pond-preview.svg",
     accentColor: "#A8B5C5",
   },
   {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     description: "Personal AI finance. Your money, interpreted.",
     status: "live",
     size: "small",
-    screengrab: "/images/smith-preview.png",
+    screengrab: "/images/smith-preview.svg",
     accentColor: "#C5C0A8",
   },
   {
@@ -74,7 +74,7 @@ export const projects: Project[] = [
     description: "AI-powered market prediction and trading signals.",
     status: "building",
     size: "small",
-    screengrab: "/images/nous-preview.png",
+    screengrab: "/images/nous-preview.svg",
     accentColor: "#B5A8C5",
   },
   {
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     description: "Personal health tracking. Quiet, precise, private.",
     status: "building",
     size: "small",
-    screengrab: null,
+    screengrab: "/images/tare-preview.svg",
     accentColor: "#A8C5C0",
   },
 ];

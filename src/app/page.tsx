@@ -18,7 +18,7 @@ export default function Home() {
       <Projects />
       <Divider />
       <Work />
-      <Divider />
+      <div className="h-20 md:h-28" />
       <Contact />
       <Footer />
     </main>
