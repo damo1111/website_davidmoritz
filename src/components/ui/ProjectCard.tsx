@@ -2,18 +2,18 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { AppMockup } from "@/components/ui/AppMockup";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
   project: Project;
   className?: string;
-  /** Large cards place the copy beside the art on desktop. */
+  /** Large cards place the mockup beside the copy on desktop. */
   wide?: boolean;
 }
 
 export function ProjectCard({ project, className, wide = false }: ProjectCardProps) {
-  const { name, studio, url, tag, description, status, screengrab, accentColor } =
-    project;
+  const { id, name, studio, url, tag, description, status, accentColor } = project;
 
   const CardTag = url ? "a" : "div";
   const linkProps = url
@@ -36,43 +36,21 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
         {...linkProps}
         className={cn(
           "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border-2 border-ink",
-          "transition-all duration-200 ease-out",
+          "bg-bg transition-all duration-200 ease-out",
           "hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#0B0B0B]",
-          wide && "md:min-h-[360px] md:flex-row"
+          wide && "md:min-h-[380px] md:flex-row"
         )}
-        style={{ backgroundColor: accentColor }}
       >
-        {/* Artwork */}
+        {/* Animated app mockup */}
         <div
           className={cn(
-            "relative shrink-0 overflow-hidden",
-            wide ? "h-44 md:h-auto md:w-1/2" : "h-40"
+            "relative shrink-0 overflow-hidden border-ink",
+            wide
+              ? "h-56 border-b-2 md:h-auto md:w-1/2 md:border-b-0 md:border-r-2"
+              : "h-52 border-b-2"
           )}
-          style={
-            screengrab
-              ? {
-                  backgroundImage: `url(${screengrab})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }
-              : undefined
-          }
         >
-          <div
-            className={cn(
-              "absolute inset-0 border-ink transition-transform duration-500 group-hover:scale-105",
-              wide ? "border-b-2 md:border-b-0 md:border-r-2" : "border-b-2"
-            )}
-            style={
-              screengrab
-                ? {
-                    backgroundImage: `url(${screengrab})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }
-                : undefined
-            }
-          />
+          <AppMockup id={id} accent={accentColor} />
         </div>
 
         {/* Content */}
@@ -119,7 +97,7 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
             {description}
           </p>
 
-          {/* URL */}
+          {/* URL / status */}
           <p className="mt-4 font-mono text-xs font-bold uppercase tracking-tight text-accent">
             {url ? `${url} →` : "In development"}
           </p>
