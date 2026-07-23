@@ -48,6 +48,8 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
   const asset = ASSETS[id] ?? {};
   const useShot = Boolean(asset.shot) && wide;
 
+  // Continuous idle float — always looping, but invisible until the
+  // entrance (below) reveals it on scroll, so it never jumps on reveal.
   const float: Variants = {
     animate: reduce
       ? {}
@@ -68,42 +70,54 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
       }}
     >
       {/* LED glow */}
-      <div
+      <motion.div
         aria-hidden="true"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.6 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, delay: 0.2 }}
         className="pointer-events-none absolute h-44 w-44 rounded-full"
-        style={{ background: accent, opacity: 0.6, filter: "blur(52px)" }}
+        style={{ background: accent, filter: "blur(52px)" }}
       />
 
+      {/* Entrance — reveals when the tile scrolls into view */}
       <motion.div
-        variants={float}
-        initial={reduce ? undefined : { rotateX: 7, rotateY: -12 }}
-        animate="animate"
-        style={{ transformStyle: "preserve-3d" }}
-        className="relative"
+        initial={{ opacity: 0, scale: 0.8, y: 24 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ type: "spring", stiffness: 140, damping: 16 }}
       >
-        {useShot ? (
-          // Real screen grab in a device frame
-          <div className="rounded-[1.6rem] border-[5px] border-ink bg-ink p-1 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
-            <div className="overflow-hidden rounded-[1.25rem]">
+        <motion.div
+          variants={float}
+          initial={reduce ? undefined : { rotateX: 7, rotateY: -12 }}
+          animate="animate"
+          style={{ transformStyle: "preserve-3d" }}
+          className="relative"
+        >
+          {useShot ? (
+            // Real screen grab in a device frame
+            <div className="rounded-[1.6rem] border-[5px] border-ink bg-ink p-1 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
+              <div className="overflow-hidden rounded-[1.25rem]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={asset.shot}
+                  alt="Ministry of Susan app screen"
+                  className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
+                />
+              </div>
+            </div>
+          ) : (
+            // Real app icon
+            <div className="h-28 w-28 overflow-hidden rounded-[1.5rem] border-2 border-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] md:h-32 md:w-32">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={asset.shot}
-                alt="Ministry of Susan app screen"
-                className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
+                src={asset.logo}
+                alt="app logo"
+                className="h-full w-full object-cover"
               />
             </div>
-          </div>
-        ) : (
-          // Real app icon
-          <div className="h-28 w-28 overflow-hidden rounded-[1.5rem] border-2 border-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] md:h-32 md:w-32">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={asset.logo}
-              alt="app logo"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        )}
+          )}
+        </motion.div>
       </motion.div>
     </div>
   );

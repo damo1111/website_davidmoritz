@@ -45,10 +45,6 @@ export function Hero() {
           DM
         </span>
         <div className="flex items-center gap-3">
-          <span className="hidden items-center gap-2 rounded-full border border-ink px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight sm:inline-flex">
-            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" />
-            Available for work
-          </span>
           <a
             href="mailto:david@moritznet.com"
             className="rounded-full bg-ink px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight text-bg transition-transform hover:-translate-y-0.5"
