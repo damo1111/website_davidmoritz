@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { AppMockup } from "@/components/ui/AppMockup";
+import { RealAppArt } from "@/components/ui/RealAppArt";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -50,7 +50,7 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
               : "h-52 border-b-2"
           )}
         >
-          <AppMockup id={id} accent={accentColor} />
+          <RealAppArt id={id} accent={accentColor} wide={wide} />
         </div>
 
         {/* Content */}
