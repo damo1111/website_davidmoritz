@@ -74,5 +74,6 @@ back to a per-project accent color block automatically.
 
 ## Deployment
 
-Deploys to Vercel. `vercel.json` redirects the `mnemolabs.co` host to
-`mnemolabs.app`. Add the custom domain in the Vercel dashboard.
+Builds to a standard Next.js production output (`npm run build`) and can be
+hosted on any platform that supports Next.js. Point your custom domain at the
+host once deployed.
