@@ -14,7 +14,7 @@ const spanClasses: Record<string, string> = {
   "pond-hopping": "md:col-span-3", // half
   moritzwith: "md:col-span-2", // third
   nous: "md:col-span-2", // third
-  tare: "md:col-span-2", // third
+  chinwag: "md:col-span-2", // third
 };
 
 export function Projects() {

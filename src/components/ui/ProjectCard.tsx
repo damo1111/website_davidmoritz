@@ -2,27 +2,18 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { RealAppArt } from "@/components/ui/RealAppArt";
 import type { Project } from "@/data/projects";
 
 interface ProjectCardProps {
   project: Project;
   className?: string;
-  /** Large cards place the copy beside the art on desktop. */
+  /** Large cards place the mockup beside the copy on desktop. */
   wide?: boolean;
 }
 
 export function ProjectCard({ project, className, wide = false }: ProjectCardProps) {
-  const { name, studio, url, tag, description, status, screengrab, accentColor } =
-    project;
-
-  const CardTag = url ? "a" : "div";
-  const linkProps = url
-    ? {
-        href: `https://${url}`,
-        target: "_blank",
-        rel: "noopener noreferrer",
-      }
-    : {};
+  const { id, name, studio, tag, description, status, accentColor } = project;
 
   return (
     <motion.div
@@ -32,52 +23,27 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
       transition={{ type: "spring", stiffness: 120, damping: 18 }}
       className={cn("group h-full", className)}
     >
-      <CardTag
-        {...linkProps}
+      <div
         className={cn(
-          "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border-2 border-ink",
-          "transition-all duration-200 ease-out",
-          "hover:-translate-y-1 hover:shadow-[8px_8px_0_0_#0B0B0B]",
-          wide && "md:min-h-[360px] md:flex-row"
+          "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border-2 border-ink bg-bg",
+          wide && "md:min-h-[380px] md:flex-row"
         )}
-        style={{ backgroundColor: accentColor }}
       >
-        {/* Artwork */}
+        {/* Real app imagery */}
         <div
           className={cn(
-            "relative shrink-0 overflow-hidden",
-            wide ? "h-44 md:h-auto md:w-1/2" : "h-40"
+            "relative shrink-0 overflow-hidden border-ink",
+            wide
+              ? "h-56 border-b-2 md:h-auto md:w-1/2 md:border-b-0 md:border-r-2"
+              : "h-52 border-b-2"
           )}
-          style={
-            screengrab
-              ? {
-                  backgroundImage: `url(${screengrab})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }
-              : undefined
-          }
         >
-          <div
-            className={cn(
-              "absolute inset-0 border-ink transition-transform duration-500 group-hover:scale-105",
-              wide ? "border-b-2 md:border-b-0 md:border-r-2" : "border-b-2"
-            )}
-            style={
-              screengrab
-                ? {
-                    backgroundImage: `url(${screengrab})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }
-                : undefined
-            }
-          />
+          <RealAppArt id={id} accent={accentColor} wide={wide} />
         </div>
 
         {/* Content */}
         <div className="relative flex flex-1 flex-col bg-bg p-6">
-          {/* Top row: studio + arrow */}
+          {/* Top row: studio + status */}
           <div className="flex items-start justify-between">
             <div className="inline-flex items-center gap-2">
               <span
@@ -90,18 +56,9 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
                 {studio}
               </span>
             </div>
-            {url ? (
-              <span
-                className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-ink bg-bg text-base font-bold text-ink transition-transform duration-300 group-hover:rotate-45"
-                aria-hidden="true"
-              >
-                ↗
-              </span>
-            ) : (
-              <span className="rounded-full bg-ink px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-tight text-bg">
-                Soon
-              </span>
-            )}
+            <span className="rounded-full bg-ink px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-tight text-bg">
+              {status === "live" ? "Live" : "Building"}
+            </span>
           </div>
 
           {/* Name + tag */}
@@ -119,12 +76,12 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
             {description}
           </p>
 
-          {/* URL */}
+          {/* Status line — no link, nothing is public yet */}
           <p className="mt-4 font-mono text-xs font-bold uppercase tracking-tight text-accent">
-            {url ? `${url} →` : "In development"}
+            {status === "live" ? "Private beta" : "In development"}
           </p>
         </div>
-      </CardTag>
+      </div>
     </motion.div>
   );
 }

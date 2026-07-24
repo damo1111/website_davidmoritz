@@ -1,7 +1,6 @@
 const links = [
   { label: "Mnemo", href: "https://mnemo.systems" },
   { label: "eend.app", href: "https://eend.app" },
-  { label: "NOT THAT CVNVRD", href: null },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/davidmoritz" },
 ];
 

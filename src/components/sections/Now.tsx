@@ -31,14 +31,6 @@ const cards: NowCard[] = [
     status: "building",
     statusLabel: "Building",
   },
-  {
-    emoji: "🪿",
-    name: "NOT THAT CVNVRD",
-    description: "Directional fashion label. Duck energy. Canard universe.",
-    url: null,
-    status: "development",
-    statusLabel: "In Development",
-  },
 ];
 
 const container = {
@@ -98,7 +90,7 @@ export function Now() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3"
+        className="mt-12 grid grid-cols-1 gap-5 md:max-w-3xl md:grid-cols-2"
       >
         {cards.map((card) => {
           const CardTag = card.url ? "a" : "div";
