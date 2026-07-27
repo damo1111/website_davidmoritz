@@ -12,7 +12,7 @@ import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer
 
 type AppAsset =
   | { kind: "video"; src: string; poster: string }
-  | { kind: "slideshow"; images: string[]; frame: "browser" | "phone" }
+  | { kind: "slideshow"; images: string[] }
   | { kind: "logo"; src: string };
 
 const ASSETS: Record<string, AppAsset> = {
@@ -22,9 +22,14 @@ const ASSETS: Record<string, AppAsset> = {
     poster: "/images/apps/susan-shot.png",
   },
   nous: {
-    kind: "slideshow",
-    images: ["/images/apps/nous-shot-1.png", "/images/apps/nous-shot-2.png"],
-    frame: "browser",
+    kind: "video",
+    src: "/videos/nous-flow.webm",
+    poster: "/images/apps/nous-poster.png",
+  },
+  "pond-hopping": {
+    kind: "video",
+    src: "/videos/pond-flow.webm",
+    poster: "/images/apps/pond-poster.png",
   },
   chinwag: {
     kind: "slideshow",
@@ -33,10 +38,8 @@ const ASSETS: Record<string, AppAsset> = {
       "/images/apps/chinwag-shot-2.png",
       "/images/apps/chinwag-shot-3.png",
     ],
-    frame: "phone",
   },
   davanity: { kind: "logo", src: "/images/apps/davanity-logo.png" },
-  "pond-hopping": { kind: "logo", src: "/images/apps/pond-logo.png" },
   moritzwith: { kind: "logo", src: "/images/apps/duckworth-logo.png" },
 };
 
@@ -121,7 +124,7 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
                 className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
               />
             </PhoneFrame>
-          ) : asset?.kind === "slideshow" && asset.frame === "phone" ? (
+          ) : asset?.kind === "slideshow" ? (
             <PhoneFrame>
               <Crossfade images={asset.images} reduce={!!reduce}>
                 {(src) => (
@@ -134,8 +137,6 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
                 )}
               </Crossfade>
             </PhoneFrame>
-          ) : asset?.kind === "slideshow" ? (
-            <BrowserFrame images={asset.images} reduce={!!reduce} />
           ) : (
             <LogoTile src={asset?.src} />
           )}
@@ -189,35 +190,6 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="rounded-[1.6rem] border-[5px] border-ink bg-ink p-1 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
       <div className="overflow-hidden rounded-[1.25rem]">{children}</div>
-    </div>
-  );
-}
-
-function BrowserFrame({ images, reduce }: { images: string[]; reduce: boolean }) {
-  const index = useCycle(images.length, reduce);
-
-  return (
-    <div className="w-full max-w-[320px] overflow-hidden rounded-xl border-[3px] border-ink bg-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] md:max-w-[380px]">
-      <div className="flex items-center gap-1.5 bg-ink px-3 py-2">
-        <span className="h-2 w-2 rounded-full bg-bg/30" />
-        <span className="h-2 w-2 rounded-full bg-bg/30" />
-        <span className="h-2 w-2 rounded-full bg-bg/30" />
-      </div>
-      <div className="relative aspect-[3/2] w-full">
-        <AnimatePresence initial={false}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <motion.img
-            key={images[index]}
-            src={images[index]}
-            alt="app screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 h-full w-full object-cover object-top"
-          />
-        </AnimatePresence>
-      </div>
     </div>
   );
 }
