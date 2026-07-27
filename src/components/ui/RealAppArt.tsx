@@ -5,14 +5,14 @@ import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer
 
 /**
  * Presents real imagery pulled straight from each live app — a recorded
- * screen flow, a crossfading pair of real screens, or (where neither is
+ * screen flow, a crossfading set of real screens, or (where neither is
  * reachable yet) the app's real logo shown as a floating app-icon. Kept on
  * the same tilted-3D treatment across the grid. Purely presentational.
  */
 
 type AppAsset =
   | { kind: "video"; src: string; poster: string }
-  | { kind: "slideshow"; images: string[] }
+  | { kind: "slideshow"; images: string[]; frame: "browser" | "phone" }
   | { kind: "logo"; src: string };
 
 const ASSETS: Record<string, AppAsset> = {
@@ -24,11 +24,20 @@ const ASSETS: Record<string, AppAsset> = {
   nous: {
     kind: "slideshow",
     images: ["/images/apps/nous-shot-1.png", "/images/apps/nous-shot-2.png"],
+    frame: "browser",
+  },
+  chinwag: {
+    kind: "slideshow",
+    images: [
+      "/images/apps/chinwag-shot-1.png",
+      "/images/apps/chinwag-shot-2.png",
+      "/images/apps/chinwag-shot-3.png",
+    ],
+    frame: "phone",
   },
   davanity: { kind: "logo", src: "/images/apps/davanity-logo.png" },
   "pond-hopping": { kind: "logo", src: "/images/apps/pond-logo.png" },
   moritzwith: { kind: "logo", src: "/images/apps/duckworth-logo.png" },
-  chinwag: { kind: "logo", src: "/images/apps/chinwag-logo.png" },
 };
 
 function shade(hex: string, amt: number) {
@@ -112,6 +121,19 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
                 className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
               />
             </PhoneFrame>
+          ) : asset?.kind === "slideshow" && asset.frame === "phone" ? (
+            <PhoneFrame>
+              <Crossfade images={asset.images} reduce={!!reduce}>
+                {(src) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={src}
+                    alt="app screen"
+                    className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
+                  />
+                )}
+              </Crossfade>
+            </PhoneFrame>
           ) : asset?.kind === "slideshow" ? (
             <BrowserFrame images={asset.images} reduce={!!reduce} />
           ) : (
@@ -119,6 +141,46 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
           )}
         </motion.div>
       </motion.div>
+    </div>
+  );
+}
+
+function useCycle(count: number, reduce: boolean, intervalMs = 3200) {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    if (reduce || count < 2) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % count), intervalMs);
+    return () => clearInterval(id);
+  }, [count, reduce, intervalMs]);
+  return index;
+}
+
+function Crossfade({
+  images,
+  reduce,
+  children,
+}: {
+  images: string[];
+  reduce: boolean;
+  children: (src: string) => React.ReactNode;
+}) {
+  const index = useCycle(images.length, reduce);
+  return (
+    <div className="relative">
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={images[index]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className="absolute inset-0"
+        >
+          {children(images[index])}
+        </motion.div>
+      </AnimatePresence>
+      {/* spacer to hold layout size from the first image */}
+      <div className="invisible">{children(images[0])}</div>
     </div>
   );
 }
@@ -132,15 +194,7 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
 }
 
 function BrowserFrame({ images, reduce }: { images: string[]; reduce: boolean }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (reduce || images.length < 2) return;
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
-    }, 3200);
-    return () => clearInterval(id);
-  }, [images.length, reduce]);
+  const index = useCycle(images.length, reduce);
 
   return (
     <div className="w-full max-w-[320px] overflow-hidden rounded-xl border-[3px] border-ink bg-ink shadow-[0_24px_48px_-12px_rgba(0,0,0,0.55)] md:max-w-[380px]">
@@ -155,7 +209,7 @@ function BrowserFrame({ images, reduce }: { images: string[]; reduce: boolean })
           <motion.img
             key={images[index]}
             src={images[index]}
-            alt="Nous app screen"
+            alt="app screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
