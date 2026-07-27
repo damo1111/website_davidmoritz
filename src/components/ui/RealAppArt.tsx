@@ -39,7 +39,11 @@ const ASSETS: Record<string, AppAsset> = {
       "/images/apps/chinwag-shot-3.png",
     ],
   },
-  davanity: { kind: "logo", src: "/images/apps/davanity-logo.png" },
+  davanity: {
+    kind: "video",
+    src: "/videos/davanity-flow.webm",
+    poster: "/images/apps/davanity-poster.png",
+  },
   moritzwith: {
     kind: "video",
     src: "/videos/duckworth-flow.webm",
