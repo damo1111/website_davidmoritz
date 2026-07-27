@@ -40,7 +40,11 @@ const ASSETS: Record<string, AppAsset> = {
     ],
   },
   davanity: { kind: "logo", src: "/images/apps/davanity-logo.png" },
-  moritzwith: { kind: "logo", src: "/images/apps/duckworth-logo.png" },
+  moritzwith: {
+    kind: "video",
+    src: "/videos/duckworth-flow.webm",
+    poster: "/images/apps/duckworth-poster.png",
+  },
 };
 
 function shade(hex: string, amt: number) {
