@@ -1,7 +1,7 @@
 const links = [
   { label: "Mnemo", href: "https://mnemo.systems" },
   { label: "eend.app", href: "https://eend.app" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/davidmoritz" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/damoritz/" },
 ];
 
 export function Footer() {
