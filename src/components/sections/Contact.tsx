@@ -25,10 +25,10 @@ export function Contact() {
           early-stage collaboration.
         </p>
         <a
-          href="mailto:david@moritznet.com"
+          href="mailto:david@moritz.life"
           className="group mt-10 inline-flex w-fit items-center gap-3 rounded-full bg-bg px-8 py-4 font-mono text-sm font-bold uppercase tracking-tight text-ink transition-transform hover:-translate-y-1"
         >
-          david@moritznet.com
+          david@moritz.life
           <span className="transition-transform duration-300 group-hover:translate-x-1">
             →
           </span>

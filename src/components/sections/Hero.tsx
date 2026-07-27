@@ -46,7 +46,7 @@ export function Hero() {
         </span>
         <div className="flex items-center gap-3">
           <a
-            href="mailto:david@moritznet.com"
+            href="mailto:david@moritz.life"
             className="rounded-full bg-ink px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight text-bg transition-transform hover:-translate-y-0.5"
           >
             Get in touch
@@ -99,10 +99,10 @@ export function Hero() {
             </span>
           </a>
           <a
-            href="mailto:david@moritznet.com"
+            href="mailto:david@moritz.life"
             className="inline-flex items-center rounded-full border-2 border-ink px-7 py-3 font-mono text-sm font-bold uppercase tracking-tight text-ink transition-colors hover:bg-ink hover:text-bg"
           >
-            david@moritznet.com
+            david@moritz.life
           </a>
         </motion.div>
       </motion.div>
