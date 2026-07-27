@@ -121,7 +121,7 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
                 loop
                 muted
                 playsInline
-                className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
+                className="h-[300px] w-[142px] object-cover object-top md:h-[340px] md:w-[161px]"
               />
             </PhoneFrame>
           ) : asset?.kind === "slideshow" ? (
@@ -132,7 +132,7 @@ export function RealAppArt({ id, accent, wide = false }: Props) {
                   <img
                     src={src}
                     alt="app screen"
-                    className="h-[300px] w-[168px] object-cover object-top md:h-[340px] md:w-[190px]"
+                    className="h-[300px] w-[142px] object-cover object-top md:h-[340px] md:w-[161px]"
                   />
                 )}
               </Crossfade>
