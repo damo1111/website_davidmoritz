@@ -25,17 +25,17 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
     >
       <div
         className={cn(
-          "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border-2 border-ink bg-bg",
+          "relative flex h-full min-h-[300px] flex-col overflow-hidden rounded-3xl border border-line bg-paper transition-colors duration-200 hover:border-accent/40",
           wide && "md:min-h-[380px] md:flex-row"
         )}
       >
         {/* Real app imagery */}
         <div
           className={cn(
-            "relative shrink-0 overflow-hidden border-ink",
+            "relative shrink-0 overflow-hidden border-line",
             wide
-              ? "h-56 border-b-2 md:h-auto md:w-1/2 md:border-b-0 md:border-r-2"
-              : "h-52 border-b-2"
+              ? "h-56 border-b md:h-auto md:w-1/2 md:border-b-0 md:border-r"
+              : "h-52 border-b"
           )}
         >
           <RealAppArt id={id} accent={accentColor} wide={wide} />
@@ -49,7 +49,7 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
               <span
                 className={cn(
                   "h-1.5 w-1.5 rounded-full",
-                  status === "live" ? "animate-pulse-dot bg-accent" : "bg-ink"
+                  status === "live" ? "animate-pulse-dot bg-accent" : "bg-accent2"
                 )}
               />
               <span className="font-mono text-[10px] font-bold uppercase tracking-tight text-muted">

@@ -55,14 +55,14 @@ function StatusPill({
   label: string;
 }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-ink px-3 py-1">
+    <div className="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1">
       <span
         className={cn(
           "h-1.5 w-1.5 rounded-full",
-          status === "active" ? "animate-pulse-dot bg-accent" : "bg-ink"
+          status === "active" ? "animate-pulse-dot bg-accent" : "bg-accent2"
         )}
       />
-      <span className="font-mono text-[10px] font-medium uppercase tracking-tight text-ink">
+      <span className="font-mono text-[10px] font-medium uppercase tracking-tight text-muted">
         {label}
       </span>
     </div>
@@ -106,9 +106,9 @@ export function Now() {
               <CardTag
                 {...linkProps}
                 className={cn(
-                  "flex h-full flex-col rounded-3xl border-2 border-ink bg-bg p-7 transition-all duration-200",
+                  "flex h-full flex-col rounded-3xl border border-line bg-paper p-7 transition-all duration-200",
                   card.url &&
-                    "hover:-translate-y-1 hover:bg-paper hover:shadow-[6px_6px_0_0_#0B0B0B]"
+                    "hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_28px_60px_-28px_rgba(217,185,138,0.45)]"
                 )}
               >
                 <div className="text-4xl">{card.emoji}</div>

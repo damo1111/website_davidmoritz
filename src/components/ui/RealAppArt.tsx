@@ -195,8 +195,10 @@ function Crossfade({
 }
 
 function PhoneFrame({ children }: { children: React.ReactNode }) {
+  // Fixed dark bezel — a phone's chassis, not a themed surface, so it
+  // stays black regardless of the site's own light/dark tokens.
   return (
-    <div className="rounded-[1.6rem] border-[5px] border-ink bg-ink p-1 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
+    <div className="rounded-[1.6rem] border-[5px] border-black bg-black p-1 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]">
       <div className="overflow-hidden rounded-[1.25rem]">{children}</div>
     </div>
   );

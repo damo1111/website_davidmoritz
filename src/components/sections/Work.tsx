@@ -31,10 +31,10 @@ export function Work() {
         {work.map((role, i) => (
           <article
             key={`${role.company}-${role.period}`}
-            className="group relative flex min-h-[260px] w-[300px] shrink-0 snap-start flex-col rounded-3xl border-2 border-ink bg-bg p-7 transition-all duration-200 hover:-translate-y-1 hover:bg-ink hover:shadow-[8px_8px_0_0_#3B2BFF]"
+            className="group relative flex min-h-[260px] w-[300px] shrink-0 snap-start flex-col rounded-3xl border border-line bg-paper p-7 transition-all duration-200 hover:-translate-y-1 hover:bg-ink hover:shadow-[0_28px_60px_-24px_rgba(217,185,138,0.5)]"
           >
             <div className="flex items-start justify-between">
-              <span className="font-mono text-sm font-bold text-accent transition-colors group-hover:text-lime">
+              <span className="font-mono text-sm font-bold text-accent transition-colors group-hover:text-accent2">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="font-mono text-[11px] font-bold uppercase tracking-tight text-ink transition-colors group-hover:text-bg">

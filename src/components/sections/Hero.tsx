@@ -1,14 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Marquee } from "@/components/ui/Marquee";
-
-const MARQUEE_TEXT =
-  "HEAD OF PRODUCT — JET (19 MARKETS) ✳ HEAD OF PRODUCT — IAG LOYALTY & BRITISH AIRWAYS AVIOS ✳ SENIOR PM — ZOOPLA ✳ SENIOR PM — REA GROUP ✳ AMAZON ✳ TESCO ✳ FOUNDER — MNEMO ✳ BUILDER — EEND.APP ✳ ";
+import { motion, useReducedMotion } from "framer-motion";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
 };
 
 const item = {
@@ -20,23 +16,31 @@ const item = {
   },
 };
 
+const stats = [
+  { value: "20", label: "Years in product" },
+  { value: "6", label: "Live apps" },
+  { value: "4", label: "Continents" },
+];
+
 export function Hero() {
+  const reduce = useReducedMotion();
+
   return (
     <section className="relative flex min-h-screen w-full flex-col overflow-hidden">
-      {/* Playful background color blocks */}
+      {/* Ambient champagne glow behind the headline */}
       <motion.div
         aria-hidden="true"
-        initial={{ scale: 0, rotate: -20 }}
-        animate={{ scale: 1, rotate: 0 }}
-        transition={{ type: "spring", stiffness: 60, damping: 16, delay: 0.2 }}
-        className="pointer-events-none absolute -right-24 top-24 h-72 w-72 rounded-full bg-lime md:h-96 md:w-96"
-      />
-      <motion.div
-        aria-hidden="true"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 60, damping: 16, delay: 0.35 }}
-        className="pointer-events-none absolute -left-16 bottom-40 h-40 w-40 rounded-3xl bg-accent md:h-56 md:w-56"
+        className="pointer-events-none absolute left-1/2 top-[8%] h-[560px] w-[720px] -translate-x-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(217,185,138,0.22) 0%, rgba(217,185,138,0) 68%)",
+        }}
+        animate={
+          reduce
+            ? { opacity: 0.8 }
+            : { opacity: [0.7, 1, 0.7], scale: [1, 1.08, 1] }
+        }
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Top bar */}
@@ -44,14 +48,12 @@ export function Hero() {
         <span className="flex h-8 w-11 items-center justify-center rounded bg-ink font-mono text-xs font-bold text-bg">
           DM
         </span>
-        <div className="flex items-center gap-3">
-          <a
-            href="mailto:david@moritz.life"
-            className="rounded-full bg-ink px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight text-bg transition-transform hover:-translate-y-0.5"
-          >
-            Get in touch
-          </a>
-        </div>
+        <a
+          href="mailto:david@moritz.life"
+          className="rounded-full border border-line px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight text-ink transition-colors hover:border-accent2 hover:text-accent2"
+        >
+          Get in touch
+        </a>
       </div>
 
       {/* Hero content */}
@@ -59,58 +61,70 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-6 py-16"
+        className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-16 text-center"
       >
         <motion.p
           variants={item}
-          className="font-mono text-xs font-medium uppercase tracking-tight text-muted md:text-sm"
+          className="inline-flex items-center gap-2 rounded-full border border-line px-3.5 py-1.5 font-body text-xs font-medium uppercase tracking-[0.16em] text-accent2"
         >
-          Melbourne / London / Amsterdam
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          Private beta &middot; six live apps
         </motion.p>
 
         <motion.h1
           variants={item}
-          className="display-tight mt-4 font-display text-[clamp(3.5rem,15vw,12rem)] font-bold uppercase text-ink"
+          className="display-tight mt-7 font-display text-[clamp(2.6rem,7vw,4.6rem)] font-extrabold tracking-tight text-ink"
         >
-          David
+          Product leadership,
           <br />
-          Moritz<span className="text-accent">.</span>
+          <span className="font-accentSerif text-[1.15em] font-normal italic tracking-normal text-accent">
+            built by hand
+          </span>
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="mt-6 max-w-xl font-body text-lg font-medium leading-snug text-ink md:text-2xl"
+          className="mt-6 max-w-lg font-body text-base font-light leading-relaxed text-ink/80 md:text-lg"
         >
-          Senior product leader and AI builder. 20 years shipping at scale
-          across four continents.
+          David Moritz &mdash; senior product leader and AI builder. Twenty
+          years shipping at scale across four continents, now building six
+          apps solo, no VC.
         </motion.p>
 
         <motion.div
           variants={item}
-          className="mt-9 flex flex-wrap items-center gap-3"
+          className="mt-9 flex flex-wrap items-center justify-center gap-3"
         >
           <a
             href="#projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 font-mono text-sm font-bold uppercase tracking-tight text-accent-ink transition-transform hover:-translate-y-0.5"
+            className="rounded-full bg-accent px-7 py-3.5 font-body text-sm font-semibold text-accent-ink transition-transform hover:-translate-y-0.5"
           >
             See the work
-            <span className="transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
           </a>
           <a
             href="mailto:david@moritz.life"
-            className="inline-flex items-center rounded-full border-2 border-ink px-7 py-3 font-mono text-sm font-bold uppercase tracking-tight text-ink transition-colors hover:bg-ink hover:text-bg"
+            className="rounded-full border border-line px-7 py-3 font-body text-sm font-medium text-ink transition-colors hover:border-accent2 hover:text-accent2"
           >
             david@moritz.life
           </a>
         </motion.div>
-      </motion.div>
 
-      {/* Bottom marquee bar */}
-      <div className="relative z-10 w-full -rotate-1 md:-rotate-[0.5deg]">
-        <Marquee text={MARQUEE_TEXT} variant="bar" />
-      </div>
+        <motion.div
+          variants={item}
+          className="mt-14 flex w-full items-center justify-center gap-10 border-t border-line pt-8 md:gap-16"
+        >
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <p className="font-display text-2xl font-bold tabular-nums text-accent md:text-3xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

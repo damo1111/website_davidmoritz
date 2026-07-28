@@ -15,10 +15,12 @@ export function Contact() {
         <p className="font-mono text-xs font-medium uppercase tracking-tight text-accent-ink/70">
           [ Contact ]
         </p>
-        <h2 className="display-tight mt-4 font-display text-7xl font-bold uppercase md:text-[11rem]">
+        <h2 className="display-tight mt-4 font-display text-7xl font-extrabold md:text-[9rem]">
           Let&apos;s
           <br />
-          talk
+          <span className="font-accentSerif text-[0.85em] font-normal italic">
+            talk
+          </span>
         </h2>
         <p className="mt-8 max-w-xl font-body text-lg font-medium leading-snug md:text-2xl">
           Available for senior advisory, fractional product leadership, and
