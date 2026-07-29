@@ -22,8 +22,8 @@ export function Work() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, x: 60 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ type: "spring", stiffness: 90, damping: 18 }}
         className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:mx-auto md:max-w-6xl"

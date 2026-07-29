@@ -6,6 +6,15 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  /* Belt-and-braces: no element (an animation mid-transform, a stray
+     fixed-width child, etc.) should ever be able to make the page
+     itself scroll sideways — only elements that explicitly opt in
+     (e.g. .no-scrollbar carousels) may scroll horizontally. */
+  overflow-x: hidden;
+}
+
 body {
   background-color: #14161f;
   color: #ecEAE4;
