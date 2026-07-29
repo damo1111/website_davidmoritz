@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import {
   Bricolage_Grotesque,
   Public_Sans,
@@ -65,7 +66,10 @@ export default function RootLayout({
       lang="en"
       className={`${bricolageGrotesque.variable} ${publicSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-bg font-body text-ink antialiased">{children}</body>
+      <body className="bg-bg font-body text-ink antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
