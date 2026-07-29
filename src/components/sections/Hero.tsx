@@ -45,8 +45,8 @@ function StatValue({ value }: { value: number }) {
     }
 
     const controls = animate(motionValue, value, {
-      duration: 1.4,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 2,
+      ease: "easeOut",
     });
     const unsubscribe = motionValue.on("change", (latest) => {
       if (ref.current) ref.current.textContent = Math.round(latest).toString();

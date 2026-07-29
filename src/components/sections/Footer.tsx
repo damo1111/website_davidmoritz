@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const links = [
   { label: "Mnemo", href: "https://mnemolabs.co" },
   { label: "eend.app", href: "https://eend.app" },
@@ -9,9 +11,13 @@ export function Footer() {
     <footer className="w-full bg-ink text-bg">
       <div className="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-6 px-6 py-10 sm:flex-row sm:items-center">
         <div className="flex items-center gap-3">
-          <span className="flex h-8 w-11 items-center justify-center rounded bg-bg font-mono text-xs font-bold text-ink">
-            DM
-          </span>
+          <Image
+            src="/images/avatar.png"
+            alt="David Moritz"
+            width={36}
+            height={36}
+            className="h-9 w-9 rounded-full"
+          />
           <p className="font-mono text-[11px] font-medium uppercase tracking-tight text-bg/70">
             © 2026 David Moritz
           </p>
