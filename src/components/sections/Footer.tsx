@@ -1,7 +1,7 @@
 const links = [
   { label: "Mnemo", href: "https://mnemo.systems" },
   { label: "eend.app", href: "https://eend.app" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/davidmoritz" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/damoritz/" },
 ];
 
 export function Footer() {
@@ -24,7 +24,7 @@ export function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-mono text-[11px] font-bold uppercase tracking-tight text-bg transition-colors duration-200 hover:text-lime"
+                className="font-mono text-[11px] font-bold uppercase tracking-tight text-bg transition-colors duration-200 hover:text-accent2"
               >
                 {link.label}
               </a>

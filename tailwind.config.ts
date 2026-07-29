@@ -9,22 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Bold & modern light system
-        bg: "#FFFFFF",
-        ink: "#0B0B0B",
-        paper: "#F3F3EE", // soft off-white surface
-        surface: "#F3F3EE",
-        line: "#E4E4DE", // hairline borders on light
-        muted: "#6B6B73",
-        accent: "#3B2BFF", // electric indigo
-        "accent-ink": "#FFFFFF",
-        lime: "#D6FF3E", // secondary pop
-        coral: "#FF5C35", // tertiary pop
+        // Midnight Champagne — refined dark luxury
+        bg: "#14161F", // navy-black canvas
+        ink: "#ECEAE4", // warm white ink
+        paper: "#1B1E2A", // raised panel surface
+        surface: "#1B1E2A",
+        line: "rgba(236,234,228,0.1)", // hairline on navy
+        muted: "#9B98A6",
+        accent: "#D9B98A", // champagne
+        "accent-ink": "#14161F",
+        accent2: "#7B8CA8", // dusty periwinkle, used sparingly
       },
       fontFamily: {
-        display: ["var(--font-display)", "Space Grotesk", "sans-serif"],
-        body: ["var(--font-body)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "Space Mono", "monospace"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        accentSerif: ["var(--font-accent-serif)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       keyframes: {
         marquee: {

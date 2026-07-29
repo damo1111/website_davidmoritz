@@ -7,14 +7,14 @@ html {
 }
 
 body {
-  background-color: #ffffff;
-  color: #0b0b0b;
-  font-family: var(--font-body), Inter, system-ui, sans-serif;
+  background-color: #14161f;
+  color: #ecEAE4;
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 ::selection {
-  background: #3b2bff;
-  color: #ffffff;
+  background: #d9b98a;
+  color: #14161f;
 }
 
 * {
@@ -33,7 +33,7 @@ body {
 
 /* Tight, punchy display headings */
 .display-tight {
-  font-family: var(--font-display), "Space Grotesk", sans-serif;
-  letter-spacing: -0.03em;
-  line-height: 0.92;
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 0.96;
 }

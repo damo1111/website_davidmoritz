@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { ProjectModal } from "@/components/ui/ProjectModal";
 import { cn } from "@/lib/utils";
 
 const headlineLines = ["Five live apps.", "One studio.", "No VC."];
@@ -18,6 +20,9 @@ const spanClasses: Record<string, string> = {
 };
 
 export function Projects() {
+  const [openId, setOpenId] = useState<string | null>(null);
+  const openProject = projects.find((p) => p.id === openId) ?? null;
+
   return (
     <section id="projects" className="mx-auto w-full max-w-6xl px-6">
       <p className="font-mono text-xs font-medium uppercase tracking-tight text-accent">
@@ -50,9 +55,12 @@ export function Projects() {
             project={project}
             wide={project.size === "large"}
             className={cn(spanClasses[project.id])}
+            onOpen={() => setOpenId(project.id)}
           />
         ))}
       </div>
+
+      <ProjectModal project={openProject} onClose={() => setOpenId(null)} />
     </section>
   );
 }
