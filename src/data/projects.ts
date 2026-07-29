@@ -30,7 +30,7 @@ export const projects: Project[] = [
     tag: "Eldercare AI",
     tagline: "The care team, finally on the same page.",
     description:
-      "Role-aware AI care companion for families coordinating remote elderly care — one shared source of truth for schedule, notes, meds and invoices. Everyone sees exactly what they need, nothing more.",
+      "Role-aware AI care companion for families coordinating remote elderly care — one shared source of truth for schedule, meds, requests and invoices. Everyone sees exactly what they need, nothing more.",
     features: [
       {
         title: "Everyone gets their own view",
@@ -46,6 +46,11 @@ export const projects: Project[] = [
         title: "A schedule that's always current",
         description:
           "Pulls straight from the calendar feed and ingests rota screenshots or PDFs directly, no manual re-typing.",
+      },
+      {
+        title: "Meds and requests, tracked to done",
+        description:
+          "Running low on incontinence pads, a rollator to sort out, a prescription to reorder — every request stays visible, assigned and open until someone marks it done.",
       },
       {
         title: "Smart Timeline",
