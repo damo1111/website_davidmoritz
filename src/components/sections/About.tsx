@@ -38,14 +38,10 @@ export function About() {
             </p>
           </div>
 
-          <div className="flex flex-col justify-between gap-6 border-t border-line pt-6 md:col-span-2 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+          <div className="flex flex-col gap-6 border-t border-line pt-6 md:col-span-2 md:border-l md:border-t-0 md:pl-10 md:pt-0">
             <p className="font-accentSerif text-2xl italic leading-snug text-accent md:text-3xl">
-              Open to senior product leadership roles with genuine scope to
-              shape strategy, raise the bar for product thinking, and build
-              teams that do their best work.
-            </p>
-            <p className="font-mono text-xs font-medium uppercase tracking-tight text-muted">
-              Finishing at JET, March 2026
+              Product leadership is turning ambiguity into a bet worth
+              making — then building the team that proves it right.
             </p>
           </div>
         </div>
