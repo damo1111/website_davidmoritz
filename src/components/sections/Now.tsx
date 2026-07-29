@@ -22,7 +22,7 @@ const cards: NowCard[] = [
     name: "Mnemo",
     description:
       "Context-aware ambient AI. Human signal from wearables and spatial computing.",
-    url: "mnemo.systems",
+    url: "mnemolabs.app",
     status: "active",
     statusLabel: "Active · SEIS Approved",
   },
