@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 interface NowCard {
   emoji: string;
   name: string;
+  /** Number of letters redacted from the end of the name with a solid bar. */
+  maskChars?: number;
   description: string;
   url: string | null;
   status: "active" | "building" | "development";
@@ -35,7 +37,8 @@ const cards: NowCard[] = [
   },
   {
     emoji: "🧵",
-    name: "Not That Canard",
+    name: "Not That C",
+    maskChars: 5,
     description: "Loose threads, pulled together. More stitched up soon.",
     url: null,
     status: "development",
@@ -161,8 +164,18 @@ export function Now() {
                 <div className={cn("text-4xl", card.secret && "opacity-70")}>
                   {card.emoji}
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-bold text-ink">
+                <h3 className="mt-5 flex items-center font-display text-2xl font-bold text-ink">
                   {card.name}
+                  {!!card.maskChars && (
+                    <span
+                      aria-hidden="true"
+                      className="ml-1.5 inline-block h-[0.72em] translate-y-[0.05em] rounded-[2px] bg-black"
+                      style={{ width: `${card.maskChars * 0.62}em` }}
+                    />
+                  )}
+                  {!!card.maskChars && (
+                    <span className="sr-only"> (redacted)</span>
+                  )}
                 </h3>
                 <p
                   className={cn(
