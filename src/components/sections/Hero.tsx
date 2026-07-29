@@ -1,6 +1,13 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+} from "framer-motion";
 
 const container = {
   hidden: {},
@@ -17,10 +24,49 @@ const item = {
 };
 
 const stats = [
-  { value: "20", label: "Years in product" },
-  { value: "6", label: "Live apps" },
-  { value: "4", label: "Continents" },
+  { value: 20, label: "Years in product" },
+  { value: 9, label: "Companies" },
+  { value: 6, label: "Live apps" },
+  { value: 4, label: "Continents" },
 ];
+
+function StatValue({ value }: { value: number }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const reduce = useReducedMotion();
+  const motionValue = useMotionValue(0);
+
+  useEffect(() => {
+    if (!inView) return;
+
+    if (reduce) {
+      if (ref.current) ref.current.textContent = value.toString();
+      return;
+    }
+
+    const controls = animate(motionValue, value, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+    });
+    const unsubscribe = motionValue.on("change", (latest) => {
+      if (ref.current) ref.current.textContent = Math.round(latest).toString();
+    });
+
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [inView, reduce, value, motionValue]);
+
+  return (
+    <p
+      ref={ref}
+      className="font-display text-2xl font-bold tabular-nums text-accent md:text-3xl"
+    >
+      0
+    </p>
+  );
+}
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -98,13 +144,11 @@ export function Hero() {
 
         <motion.div
           variants={item}
-          className="mt-14 flex w-full items-center justify-center gap-10 border-t border-line pt-8 md:gap-16"
+          className="mt-14 grid w-full grid-cols-2 gap-x-8 gap-y-7 border-t border-line pt-8 sm:flex sm:items-center sm:justify-center sm:gap-16"
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="font-display text-2xl font-bold tabular-nums text-accent md:text-3xl">
-                {stat.value}
-              </p>
+              <StatValue value={stat.value} />
               <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
                 {stat.label}
               </p>
