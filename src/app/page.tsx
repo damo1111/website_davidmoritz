@@ -8,11 +8,13 @@ import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 import { Divider } from "@/components/ui/Divider";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { Header } from "@/components/ui/Header";
 
 export default function Home() {
   return (
     <main className="relative">
       <ScrollProgress />
+      <Header />
       <Hero />
       <Divider />
       <About />

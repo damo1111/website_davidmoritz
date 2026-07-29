@@ -82,28 +82,4 @@ export const work: WorkRole[] = [
     context: "Independent product and eCommerce consulting for multiple UK retailers.",
     location: "United Kingdom",
   },
-  {
-    company: "AllSweets.com",
-    fullName: "AllSweets.com",
-    role: "Founder",
-    period: "Apr 2013 — Aug 2014",
-    context: "Founded and ran a direct-to-consumer online confectionery retailer.",
-    location: "St. Albans",
-  },
-  {
-    company: "Amazon",
-    fullName: "Amazon.co.uk",
-    role: "UK Affiliate Marketing Product Manager",
-    period: "May 2011 — Jan 2014",
-    context: "Product owner for Amazon's UK affiliate marketing programme.",
-    location: "Slough",
-  },
-  {
-    company: "Dixons Retail",
-    fullName: "Dixons Retail",
-    role: "Affiliate Marketing Manager",
-    period: "Jul 2009 — May 2011",
-    context: "Ran affiliate marketing across the Dixons, Currys, and PC World brands.",
-    location: "Hemel Hempstead",
-  },
 ];

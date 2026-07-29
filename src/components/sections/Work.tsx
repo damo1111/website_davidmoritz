@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { work } from "@/data/work";
 
-const headlineLines = ["Twenty years.", "Twelve companies.", "Four continents."];
+const headlineLines = ["Twenty years.", "Nine companies.", "Four continents."];
 
 export function Work() {
   return (

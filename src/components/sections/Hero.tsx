@@ -43,25 +43,12 @@ export function Hero() {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Top bar */}
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
-        <span className="flex h-8 w-11 items-center justify-center rounded bg-ink font-mono text-xs font-bold text-bg">
-          DM
-        </span>
-        <a
-          href="mailto:david@moritz.life"
-          className="rounded-full border border-line px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-tight text-ink transition-colors hover:border-accent2 hover:text-accent2"
-        >
-          Get in touch
-        </a>
-      </div>
-
       {/* Hero content */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-16 text-center"
+        className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 pb-16 pt-28 text-center md:pt-32"
       >
         <motion.p
           variants={item}
