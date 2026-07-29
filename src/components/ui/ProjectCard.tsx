@@ -10,10 +10,11 @@ interface ProjectCardProps {
   className?: string;
   /** Large cards place the mockup beside the copy on desktop. */
   wide?: boolean;
+  onOpen?: () => void;
 }
 
-export function ProjectCard({ project, className, wide = false }: ProjectCardProps) {
-  const { id, name, studio, tag, description, status, accentColor } = project;
+export function ProjectCard({ project, className, wide = false, onOpen }: ProjectCardProps) {
+  const { id, name, tagline, studio, tag, description, status, accentColor } = project;
 
   return (
     <motion.div
@@ -71,15 +72,30 @@ export function ProjectCard({ project, className, wide = false }: ProjectCardPro
             </span>
           </div>
 
+          <p className="mt-2 font-accentSerif text-base italic text-accent">
+            {tagline}
+          </p>
+
           {/* Description — always visible */}
           <p className="mt-3 flex-1 font-body text-sm leading-relaxed text-muted">
             {description}
           </p>
 
-          {/* Status line — no link, nothing is public yet */}
-          <p className="mt-4 font-mono text-xs font-bold uppercase tracking-tight text-accent">
-            {status === "live" ? "Private beta" : "In development"}
-          </p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+            {/* Status line — no link, nothing is public yet */}
+            <p className="font-mono text-xs font-bold uppercase tracking-tight text-accent">
+              {status === "live" ? "Private beta" : "In development"}
+            </p>
+            {onOpen && (
+              <button
+                type="button"
+                onClick={onOpen}
+                className="font-mono text-xs font-bold uppercase tracking-tight text-ink underline decoration-line underline-offset-4 transition-colors hover:text-accent hover:decoration-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                Learn more →
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
