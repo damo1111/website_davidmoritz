@@ -30,7 +30,7 @@ export const projects: Project[] = [
     tag: "Eldercare AI",
     tagline: "The care team, finally on the same page.",
     description:
-      "Role-aware AI care companion for families coordinating remote elderly care — one shared source of truth for schedule, meds, requests and invoices. Everyone sees exactly what they need, nothing more.",
+      "Role-aware AI care companion for families coordinating remote elderly care. Everyone gets exactly their view — the family admin sees everything, carers see care info and their own pay, family gets a warm read-only window in. Speak, snap or paste a note and it's filed automatically; meds and requests stay tracked until someone marks them done; and a searchable life story gives any new carer real context, not a filing cabinet nobody opens.",
     features: [
       {
         title: "Everyone gets their own view",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     tag: "Health AI",
     tagline: "Three sensors. One honest referee.",
     description:
-      "Your food log, your wearable and your scale never agree, and each lies in a known direction. Davanity triangulates all three against the one referee that can't fib — your weight trend.",
+      "Your food log, your wearable and your scale never agree, and each lies in a known direction. Davanity triangulates all three against the one referee that can't fib — your weight trend — ruling each week on the scale, not your logging. Snap a plate for an honest calorie range, track a 7-day trend instead of daily noise, and compare progress photos matched pair by pair, without ever inventing a score.",
     features: [
       {
         title: "The referee's verdict",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     tag: "Travel AI",
     tagline: "Every trip you've taken, one living map.",
     description:
-      "AI travel planning built for people who move constantly — describe the trip in plain English and it drafts the flights and structure. Every booking confirmation turns into a reviewed itinerary, automatically.",
+      "AI travel planning built for people who move constantly. Describe a trip in plain English and it drafts the flights and structure; forward a booking confirmation and it lands in your itinerary as a one-tap review. Every trip draws itself onto a living 3D map as an animated flight path, with real flight tracking, a day-by-day journal, and a concierge that knows what's missing before you land.",
     features: [
       {
         title: "A living map",
@@ -176,7 +176,7 @@ export const projects: Project[] = [
     tag: "Finance AI",
     tagline: "The AI reads. The database counts.",
     description:
-      "Household finance for money that moves between people — real shared balances, receipts that split themselves, net worth across two currencies. Every figure comes from your actual transactions, never a language model's guess.",
+      "Household finance for money that moves between people — an all-time ledger of who's owed what, receipts that split and itemise themselves, and net worth tracked across two currencies. Ask it a question in plain English and the database still does the arithmetic — every figure comes from your actual transactions, never a language model's guess.",
     features: [
       {
         title: "Balances between people, not just budgets",
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     tag: "Trading AI",
     tagline: "A panel of rival AIs calls the market — and grades its own homework, in public.",
     description:
-      "A panel of AI models — GPT, Claude, Gemini and more — call the market independently, then get scored against what actually happened. No hindsight, no hiding the misses.",
+      "A panel of AI models — GPT, Claude, Gemini and more — call the market independently: direction, conviction, and the one risk that would prove them wrong. Every call is scored against what actually happened days later, models earn their vote through track record, and nothing is ever quietly deleted.",
     features: [
       {
         title: "A panel, not an oracle",
@@ -270,7 +270,7 @@ export const projects: Project[] = [
     tag: "Messaging AI",
     tagline: "Every conversation, one inbox, still sounds like you.",
     description:
-      "One inbox across WhatsApp, SMS, Google Messages, LinkedIn and more, with AI replies drafted in your own voice, per network. A self-hosted bridge, not another silo.",
+      "One inbox across WhatsApp, SMS, Google Messages, LinkedIn and more, with AI replies drafted in your own voice, per network. Favourites interrupt even during quiet hours, everyone else gets batched into a digest, and one-time codes tidy themselves away — a self-hosted bridge, not another silo.",
     features: [
       {
         title: "One inbox, every network",
