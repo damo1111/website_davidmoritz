@@ -12,9 +12,9 @@ export const work: WorkRole[] = [
     company: "JET",
     fullName: "Just Eat Takeaway.com",
     role: "Head of Product",
-    period: "May 2024 — Jul 2026",
+    period: "May 2024 — Mar 2026",
     context:
-      "19 global markets. Led product across consumer, restaurant, and logistics.",
+      "Consolidated multiple brands into one app across every region. Scaled experiences serving tens of millions of active customers, driving double-digit growth in orders and order value through experimentation, personalisation and a relentless focus on customer experience.",
     location: "London Area · Hybrid",
   },
   {
@@ -23,7 +23,7 @@ export const work: WorkRole[] = [
     role: "Head of Product",
     period: "Nov 2021 — May 2024",
     context:
-      "Avios loyalty platform spanning British Airways, Aer Lingus, Iberia, and Vueling.",
+      "Led a cross-functional team of 40+ across five squads building the Avios ecosystem — purchase journeys, British Airways / Iberia / Aer Lingus / Vueling reward integration, and cross-partner redemption with Nectar, Finnair and Qatar Airways. Sat on the senior leadership team shaping brand-wide strategy.",
     location: "Greater London",
   },
   {

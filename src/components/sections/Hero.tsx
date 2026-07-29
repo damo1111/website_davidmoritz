@@ -26,7 +26,7 @@ export function Hero() {
   const reduce = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col overflow-hidden">
+    <section className="relative flex w-full flex-col overflow-hidden">
       {/* Ambient champagne glow behind the headline */}
       <motion.div
         aria-hidden="true"
