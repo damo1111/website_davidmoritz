@@ -12,7 +12,7 @@ export const work: WorkRole[] = [
     company: "JET",
     fullName: "Just Eat Takeaway.com",
     role: "Head of Product",
-    period: "May 2024 — Mar 2026",
+    period: "May 2024 — Jul 2026",
     context:
       "Consolidated multiple brands into one app across every region. Scaled experiences serving tens of millions of active customers, driving double-digit growth in orders and order value through experimentation, personalisation and a relentless focus on customer experience.",
     location: "London Area · Hybrid",
