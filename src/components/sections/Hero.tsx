@@ -156,6 +156,31 @@ export function Hero() {
           ))}
         </motion.div>
       </motion.div>
+
+      <motion.div
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 0.8, delay: 1.6 }}
+        className="relative z-10 flex justify-center pb-10 text-muted"
+      >
+        <motion.svg
+          width="18"
+          height="18"
+          viewBox="0 0 20 20"
+          fill="none"
+          animate={reduce ? undefined : { y: [0, 6, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <path
+            d="M4 7L10 13L16 7"
+            stroke="currentColor"
+            strokeWidth="1.75"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </motion.svg>
+      </motion.div>
     </section>
   );
 }
