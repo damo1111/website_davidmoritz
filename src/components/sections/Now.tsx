@@ -130,6 +130,10 @@ export function Now() {
             <br />
             building
           </h2>
+          <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-muted md:text-lg">
+            Three different things, running in parallel: a funded startup, a
+            solo app studio, and something new.
+          </p>
         </div>
       </div>
 
